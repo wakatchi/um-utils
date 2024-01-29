@@ -1,0 +1,21 @@
+{
+	"config": {
+		"WP_DEBUG": true
+	},
+	"phpVersion": "8.2",
+	"core": "https://ja.wordpress.org/wordpress-6.4.2-ja.zip",
+	"port": 40010,
+	"testsPort": 40011,
+	"env": {
+		"tests" : {
+			"themes": [
+			],
+			"plugins": [
+				"https://downloads.wordpress.org/plugin/ultimate-member.2.8.2.zip"
+			],
+			"mappings": {
+				"wp-content/themes/test": "./"
+			}
+		}
+	}
+}
