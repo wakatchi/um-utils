@@ -1,14 +1,11 @@
 {
     "name": "wakatchi/um-utils",
-    "description": "Utility for member site development using Ultimate Member",
+    "description": "Utility for member site development using WordPress",
     "license": "proprietary",
     "authors": [
         {
             "name": "wakatchi",
             "email": "wakatchi.watch@gmail.com"
         }
-    ],
-    "require": {
-        "ultimatemember/ultimatemember": "2.8.2"
-    }
+    ]
 }
