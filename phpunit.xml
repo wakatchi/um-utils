@@ -21,9 +21,9 @@
 			<group>external-http</group>
 		</exclude>
 	</groups>
-    <!-- <coverage processUncoveredFiles="true">
+    <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">*</directory>
+            <directory suffix=".php">src</directory>
         </include>
-    </coverage> -->
+    </coverage>
 </phpunit>
