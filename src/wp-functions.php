@@ -52,17 +52,17 @@ function wk_is_current_auther(){
 }
 
 /**
- * Outputs a formatted string representation of a variable using var_dump().
+ * Outputs the variable dump as text.
+ *
+ * This function captures the output of `var_dump()` and discards it, allowing you to use the variable dump as a string.
  *
  * @param mixed $data The variable to be dumped.
- * @return string The formatted string representation of the variable.
+ * @return void
  */
 function wk_var_dump_text( $data ){
     ob_start();
     var_dump( $data ) ;
-    $output = ob_get_contents();
     ob_end_clean();
-    return $output;
 }
 
 /**
