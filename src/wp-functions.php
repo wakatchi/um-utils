@@ -5,36 +5,37 @@ namespace Wakatchi\WPUtils;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Determine if the user is an administrator
- * 
- * @return boolean Is this user an administrator
+ * Checks if the current user is an admin user.
+ *
+ * @return bool True if the current user is an admin user, false otherwise.
  */
 function wk_is_admin_user() {
     return current_user_can( 'manage_options' );
 }
 
 /**
- * If the specified user ID is null, return the logged in user ID.
- * 
- * @return string User ID
+ * Returns the user ID if it is not null, otherwise returns the current user ID.
+ *
+ * @param int|null $user_id The user ID.
+ * @return int The user ID.
  */
 function wk_nvl_user_id( $user_id ) {
     return is_null( $user_id ) ? get_current_user_id() : $user_id ;
 }
 
 /**
- * Get current page URL
- * 
- * @return string Current page URL
+ * Returns the current page URL.
+ *
+ * @return string The current page URL.
  */
 function wk_get_current_page_url(){
     return wk_get_host_url() . $_SERVER["REQUEST_URI"];
 }
 
 /**
- * Get hostname
- * 
- * @return string hostname
+ * Returns the host URL based on the current server scheme.
+ *
+ * @return string The host URL.
  */
 function wk_get_host_url(){
     $scheme = is_ssl() ? 'https' : 'http' ;
@@ -42,19 +43,19 @@ function wk_get_host_url(){
 }
 
 /**
- * Determine if this post is a logged-in user
- * 
- * @return boolean Is this user's post
+ * Checks if the current user is the author of the post.
+ *
+ * @return bool True if the current user is the author, false otherwise.
  */
 function wk_is_current_auther(){
     return get_the_author_meta('ID') === get_current_user_id();
 }
 
 /**
- * Dump a structured variable such as an Array to a string
- * 
- * @param $data structured data
- * @return string string to output
+ * Outputs a formatted string representation of a variable using var_dump().
+ *
+ * @param mixed $data The variable to be dumped.
+ * @return string The formatted string representation of the variable.
  */
 function wk_var_dump_text( $data ){
     ob_start();
@@ -65,10 +66,13 @@ function wk_var_dump_text( $data ){
 }
 
 /**
- * Deduplicate Usermeta table search results
- * 
- * @param array $meta_values Usermeta table search results
- * @return array Search results for the Usermeta table with duplicates removed. Returns an empty array if null or empty array is specified
+ * Deserialize usermeta values.
+ *
+ * This function deserializes an array of usermeta values using `maybe_unserialize` function.
+ * It merges all the values into a single array and removes duplicates.
+ *
+ * @param array $meta_values The array of usermeta values to be deserialized.
+ * @return array The deserialized and merged array of usermeta values.
  */
 function wk_deserialize_usermeta_values( $meta_values ) {
     if( empty($meta_values )) {
