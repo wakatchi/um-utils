@@ -8,7 +8,7 @@ on:
 
 jobs:
   unit-test:
-    name: build npm 
+    name: Run nit tests with wp-env
     runs-on: ubuntu-latest
     steps:
       - name: checkout repos
