@@ -90,3 +90,19 @@ function wk_deserialize_usermeta_values( $meta_values ) {
     }
     return array_unique( $temp_values );
 }
+
+/**
+ * Loads the content of a file and returns it as a string.
+ *
+ * @param string $file The path to the file to be loaded.
+ * @param mixed $param Optional parameter to be passed to the included file.
+ * @return string The content of the file as a string.
+ */
+function wk_load_content( $file, $param = null) {
+    ob_start();
+    if( !is_null($param) ) {
+        $template_param = $param ;
+    }
+    include( $file ) ;
+    return ob_get_clean();
+}
