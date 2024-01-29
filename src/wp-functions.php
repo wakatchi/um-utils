@@ -106,3 +106,15 @@ function wk_load_content( $file, $param = null) {
     include( $file ) ;
     return ob_get_clean();
 }
+
+/**
+ * Translates and formats a string using the specified text domain.
+ *
+ * @param string $msgid The message ID to be translated.
+ * @param string $slug The text domain to use for translation.
+ * @param mixed ...$arg Optional arguments to be passed to the translated string.
+ * @return string The translated and formatted string.
+ */
+function __s( $msgid, $slug, ...$arg){
+    return sprintf( __( $msgid, $slug ), ...$arg ) ;
+}
