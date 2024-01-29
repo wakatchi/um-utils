@@ -5,29 +5,36 @@ namespace Wakatchi\WPUtils;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * 管理者ユーザかを判断する
+ * Determine if the user is an administrator
+ * 
+ * @return boolean Is this user an administrator
  */
 function wk_is_admin_user() {
     return current_user_can( 'manage_options' );
 }
 
 /**
- * 指定されたユーザIDがnullだったらログインしているユーザIDを返戻する
+ * If the specified user ID is null, return the logged in user ID.
+ * 
+ * @return string User ID
  */
-function wk_get_user_id_nvl( $user_id ) {
+function wk_nvl_user_id( $user_id ) {
     return is_null( $user_id ) ? get_current_user_id() : $user_id ;
 }
 
 /**
- * 現在のURLを取得する
+ * Get current page URL
+ * 
+ * @return string Current page URL
  */
 function wk_get_current_page_url(){
-    $scheme = is_ssl() ? 'https' : 'http' ;
-    return $scheme.'://'.$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+    return wk_get_host_url() . $_SERVER["REQUEST_URI"];
 }
 
 /**
- * 現在のホスト名を取得する
+ * Get hostname
+ * 
+ * @return string hostname
  */
 function wk_get_host_url(){
     $scheme = is_ssl() ? 'https' : 'http' ;
@@ -35,16 +42,21 @@ function wk_get_host_url(){
 }
 
 /**
- * この投稿がログインユーザ本人かを検証する
+ * Determine if this post is a logged-in user
+ * 
+ * @return boolean Is this user's post
  */
 function wk_is_current_auther(){
     return get_the_author_meta('ID') === get_current_user_id();
 }
 
 /**
- * Arrayなど構造化された変数を文字列にダンプする
+ * Dump a structured variable such as an Array to a string
+ * 
+ * @param $data structured data
+ * @return string string to output
  */
-function wk_var_dump_text($data){
+function wk_var_dump_text( $data ){
     ob_start();
     var_dump( $data ) ;
     $output = ob_get_contents();
@@ -53,10 +65,10 @@ function wk_var_dump_text($data){
 }
 
 /**
- * Usermetaテーブル検索結果の重複を取り除く
+ * Deduplicate Usermeta table search results
  * 
- * @param array $meta_values Usermetaテーブルの検索結果
- * @return array 重複が取り除かれたUsermetaテーブルの検索結果。nullもしくは空配列が指定されたら空配列を返戻する
+ * @param array $meta_values Usermeta table search results
+ * @return array Search results for the Usermeta table with duplicates removed. Returns an empty array if null or empty array is specified
  */
 function wk_deserialize_usermeta_values( $meta_values ) {
     if( empty($meta_values )) {

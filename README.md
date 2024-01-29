@@ -1,2 +1,2 @@
-# wp-functions
-Functions available for WordPress development
+# wp-utils
+Utility for member site development using WordPress

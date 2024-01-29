@@ -5,7 +5,13 @@ namespace Wakatchi\WPUtils;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * 文字列を通貨（円）表示する
+ * Display string in currency (yen)
+ * 
+ * @param string $price price
+ * @param string $alt_text alternative text. If omitted, "0円"
+ * 
+ * @return string formatted string
+ * 
  */
 function wk_currensy_display_format( $price, $alt_text = '0円'){
     if( empty($price) ){
@@ -15,7 +21,12 @@ function wk_currensy_display_format( $price, $alt_text = '0円'){
 }
 
 /**
- * 文字列を省略する
+ * omit a string to the specified size. The default string is converted to "..."
+ * 
+ * @param string $value String to omit
+ * @param string $size string length. If omitted, 100
+ * 
+ * @return string Omitted string
  */
 function wk_shorten_characters($value, $size = 100){
     if( mb_strlen( $value ) <= $size ) {
@@ -25,7 +36,12 @@ function wk_shorten_characters($value, $size = 100){
 }
 
 /**
- * 日付型を yyyy年m月d日 にフォーマットする
+ * Format date type to "yyyy年M月d日"
+ * 
+ * @param $datetime DateTime to format
+ * @param string $alt_text alternative text. If omitted, it will be blank.
+ * 
+ * @return string formatted string
  */
 function wk_datetime_display_format_yyyyMMdd ($datetime, $alt_text = ''){
     if( empty($datetime) ){
@@ -35,7 +51,12 @@ function wk_datetime_display_format_yyyyMMdd ($datetime, $alt_text = ''){
 }
 
 /**
- * 日付型を yyyy年m月d日H時i分 にフォーマットする
+ * Format date type to "yyyy年M月d日 H時i分"
+ * 
+ * @param $datetime DateTime to format
+ * @param string $alt_text alternative text. If omitted, it will be blank.
+ * 
+ * @return string formatted string
  */
 function wk_datetime_display_format_yyyyMMddhhmm ($datetime, $alt_text = ''){
     if( empty($datetime) ){
@@ -45,7 +66,12 @@ function wk_datetime_display_format_yyyyMMddhhmm ($datetime, $alt_text = ''){
 }
 
 /**
- * 日付型を yyyy年m月 にフォーマットする
+ * Format date type to "yyyy年M月"
+ * 
+ * @param $datetime DateTime to format
+ * @param string $alt_text alternative text. If omitted, it will be blank.
+ * 
+ * @return string formatted string
  */
 function wk_datetime_display_format_yyyyMM ($datetime, $alt_text = ''){
     if( empty($datetime) ){
@@ -55,14 +81,24 @@ function wk_datetime_display_format_yyyyMM ($datetime, $alt_text = ''){
 }
 
 /**
- * 配列の有効性をチェックする
+ * Determine the validity of an array
+ * - not null
+ * - is an array
+ * - There is one or more data in the array
+ * 
+ * @param $array Target data
+ * 
+ * @return boolean Whether Array is enabled or not
  */
 function wk_validate_array( $array ){
     return !is_null($array) && is_array($array) && count($array) > 0 ;
 }
 
 /**
- * unsetによる変数の無効化を安全に行う
+ * Disable a variable explicitly
+ * 
+ * @param array &$array Array
+ * @param string variable length keys
  */
 function wk_safety_unset( &$array, string ...$keys){
     foreach( $keys as $key ) {
