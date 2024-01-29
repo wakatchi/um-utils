@@ -31,4 +31,4 @@ jobs:
           php --version
           npm --version
       - name: Unit Test
-        run: test:run
+        run: npm run test:run
