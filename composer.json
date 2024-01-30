@@ -1,7 +1,8 @@
 {
     "name": "wakatchi/wp-utils",
     "description": "Utility for member site development using WordPress",
-    "license": "proprietary",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "wakatchi",

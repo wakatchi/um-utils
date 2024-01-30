@@ -21,7 +21,6 @@ tests_add_filter(
 
 WPIntegration\bootstrap_it();
 
-require_once dirname( __DIR__ ) . '/src/short-functions.php';
-require_once dirname( __DIR__ ) . '/src/um-functions.php';
-require_once dirname( __DIR__ ) . '/src/wp-functions.php';
+require_once dirname( __DIR__ ) . '/src/ShortFunctions.php';
+require_once dirname( __DIR__ ) . '/src/WPFunctions.php';
  

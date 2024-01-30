@@ -4,19 +4,19 @@ namespace Wakatchi\WPUtils;
 
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
-class WPFunctionTest extends TestCase {
+class WPFunctionsTest extends TestCase {
     
     public function testIsAdminIser(){
         // admin
         {
             wp_set_current_user( 1, "administrator" );
-            $actual = wk_is_admin_user() ;
+            $actual = WPFunctions::is_admin_user() ;
             $this->assertTrue($actual);
         }
         // foo
         {
             wp_set_current_user( 2, "foo" );
-            $actual = wk_is_admin_user() ;
+            $actual = WPFunctions::is_admin_user() ;
             $this->assertFalse($actual);
         }
     }
@@ -25,14 +25,14 @@ class WPFunctionTest extends TestCase {
         // not null
         {
             $expect = 5 ;
-            $actual = wk_nvl_user_id($expect) ;
+            $actual = WPFunctions::nvl_user_id($expect) ;
             $this->assertEquals($expect,$actual);
         }
         // null
         {
             $expect = wp_create_user( "foo","bar");
             wp_set_current_user($expect);
-            $actual = wk_nvl_user_id(null) ;
+            $actual = WPFunctions::nvl_user_id(null) ;
             $this->assertEquals($expect,$actual);
 
             wp_delete_user($expect);
@@ -43,7 +43,7 @@ class WPFunctionTest extends TestCase {
         // Test case 1: Verify that the function returns the expected output
         $expectedOutput = "Hello, World!";
         $file = dirname( __DIR__ ) . '/tests/template/file1.php';
-        $actualOutput = wk_load_content($file);
+        $actualOutput = WPFunctions::load_content($file);
         $this->assertEquals($expectedOutput, $actualOutput);
 
         // Test case 2: Verify that the function handles parameters correctly
@@ -52,14 +52,14 @@ class WPFunctionTest extends TestCase {
         $param = [
             'key' => $expectedOutput
         ];
-        $actualOutput = wk_load_content($file, $param);
+        $actualOutput = WPFunctions::load_content($file, $param);
         $this->assertEquals($expectedOutput, $actualOutput);
 
         // Test case 3: Verify that the function handles null parameters correctly
         $expectedOutput = "Hello, World!";
         $file = dirname( __DIR__ ) . '/tests/template/file1.php';
         $param = null;
-        $actualOutput = wk_load_content($file, $param);
+        $actualOutput = WPFunctions::load_content($file, $param);
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 }
