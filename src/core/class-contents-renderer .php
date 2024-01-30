@@ -1,6 +1,6 @@
 <?php
 
-namespace Wakatchi\WPUtils\core;
+namespace Wakatchi\WPUtils\Core;
 
 use function Wakatchi\WPUtils\wk_load_content;
 
