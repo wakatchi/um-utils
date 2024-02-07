@@ -39,7 +39,7 @@ class WPFunctions {
      * @return string The current page URL.
      */
     public static function get_current_page_url(){
-        return self::wk_get_host_url() . $_SERVER["REQUEST_URI"];
+        return self::get_host_url() . $_SERVER["REQUEST_URI"];
     }
 
     /**
@@ -62,17 +62,17 @@ class WPFunctions {
     }
 
     /**
-     * Outputs the variable dump as text.
-     *
-     * This function captures the output of `var_dump()` and discards it, allowing you to use the variable dump as a string.
+     * Outputs a formatted string representation of a variable using var_dump.
      *
      * @param mixed $data The variable to be dumped.
-     * @return void
+     * @return string The formatted string representation of the variable.
      */
     public static function var_dump_text( $data ){
         ob_start();
         var_dump( $data ) ;
+        $output = ob_get_contents();
         ob_end_clean();
+        return $output;
     }
 
     /**
