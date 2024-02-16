@@ -1,8 +1,8 @@
 <?php
 
-namespace Wakatchi\WPUtils\Core;
+namespace Wakatchi\UMUtils\Core;
 
-use Wakatchi\WPUtils\WPFunctions;
+use Wakatchi\UMUtils\WPFunctions;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 

@@ -1,5 +1,5 @@
 {
-    "name": "wakatchi/wp-utils",
+    "name": "wakatchi/um-utils",
     "description": "Utility for member site development using WordPress",
     "type": "library",
     "license": "MIT",
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-          "Wakatchi\\WPUtils\\": "src/"
+          "Wakatchi\\UMUtils\\": "src/"
         }
       }
 }

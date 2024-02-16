@@ -1,6 +1,6 @@
 <?php
 
-namespace Wakatchi\WPUtils;
+namespace Wakatchi\UMUtils;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
