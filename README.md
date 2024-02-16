@@ -1,7 +1,7 @@
 # wp-utils
-Utility for member site development using WordPress
+Utility for building matching sites using Ultimate members
 
 ## install
 ```bash
-composer require wakatchi/wp-utils
+composer require wakatchi/um-utils
 ```
