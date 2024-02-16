@@ -1,10 +1,10 @@
 <?php
 
-namespace Wakatchi\WPUtils;
+namespace Wakatchi\UMUtils;
 
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
-class ShortFunctionsTest extends TestCase{
+class ShortFunctionsTest extends TestCase {
     
     function testCurrensyDisplayFormat() {
         {

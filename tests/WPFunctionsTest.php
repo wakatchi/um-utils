@@ -1,6 +1,6 @@
 <?php
 
-namespace Wakatchi\WPUtils;
+namespace Wakatchi\UMUtils;
 
 use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
