@@ -40,6 +40,17 @@ class ShortFunctions {
     }
 
     /**
+     * Returns the formatted number or a default value if the number is empty.
+     *
+     * @param mixed $value The number to format.
+     * @param string $default The default value to return if the number is empty. Default is '-'.
+     * @return string The formatted number or the default value.
+     */
+    public static function get_number_or_default( $value, $default = '-'){
+        return !empty($value) ? number_format($value) : $default ;
+    }
+
+    /**
      * Shortens a string to a specified number of characters.
      *
      * @param string $value The string to be shortened.
