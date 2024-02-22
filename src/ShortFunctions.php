@@ -29,6 +29,17 @@ class ShortFunctions {
     }
 
     /**
+     * Returns the given value if it is not empty, otherwise returns the default value.
+     *
+     * @param mixed $value The value to check.
+     * @param mixed $default The default value to return if the given value is empty. Default is '-'.
+     * @return mixed The given value if it is not empty, otherwise the default value.
+     */
+    public static function get_or_default( $value, $default = '-'){
+        return !empty($value) ? $value : $default ;
+    }
+
+    /**
      * Shortens a string to a specified number of characters.
      *
      * @param string $value The string to be shortened.

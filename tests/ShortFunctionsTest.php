@@ -190,4 +190,79 @@ class ShortFunctionsTest extends TestCase {
         }
     }
 
+   /**
+     */
+    // #[Test]
+    // public function testUsermetaテーブル検索結果の重複を取り除く(){
+    //     // 通常
+    //     {
+    //         $meta_key = "key";
+
+    //         $test_user1 = wp_create_user( "scott1","tiger1");
+    //         $meta_value1 = [1,2];
+    //         update_user_meta($test_user1,$meta_key,$meta_value1);
+
+    //         $test_user2 = wp_create_user( "scott2","tiger2");
+    //         $meta_value2 = [3,4,5];
+    //         update_user_meta($test_user2,$meta_key,$meta_value2);
+
+    //         $expected = array_merge($meta_value1 , $meta_value2 );
+    //         $meta_values = ConstRoom()->wp()->get_members_meta($meta_key);
+
+    //         $actual = cr_deserialize_usermeta_values($meta_values);
+
+    //         $this->assertNotNull($actual,"重複を取り除いた値を取得できない");
+    //         $this->assertIsArray($actual,"配列ではない");
+    //         $this->assertEquals(count($expected),count($actual) ,"配列数が一致しない");
+    //         $this->assertEquals([],array_diff($expected,$actual) ,"配列が一致しない");
+
+    //         delete_user_meta($test_user1,$meta_key);
+    //         delete_user_meta($test_user2,$meta_key);
+    //         wp_delete_user($test_user1);
+    //         wp_delete_user($test_user2);
+
+    //     }
+    //     // 配列
+    //     {
+    //         $meta_key = "key";
+
+    //         $test_user1 = wp_create_user( "scott1","tiger1");
+    //         $meta_value1 = [1,2];
+    //         update_user_meta($test_user1,$meta_key,$meta_value1);
+
+    //         $test_user2 = wp_create_user( "scott2","tiger2");
+    //         $meta_value2 = 3;
+    //         update_user_meta($test_user2,$meta_key,$meta_value2);
+
+    //         $meta_value1[] = $meta_value2;
+    //         $meta_values = ConstRoom()->wp()->get_members_meta($meta_key);
+
+    //         $actual = cr_deserialize_usermeta_values($meta_values);
+
+    //         $this->assertNotNull($actual,"重複を取り除いた値を取得できない");
+    //         $this->assertIsArray($actual,"配列ではない");
+    //         $this->assertEquals(count($meta_value1),count($actual) ,"配列数が一致しない");
+    //         $this->assertEquals([],array_diff($meta_value1,$actual) ,"配列が一致しない");
+
+    //         delete_user_meta($test_user1,$meta_key);
+    //         delete_user_meta($test_user2,$meta_key);
+    //         wp_delete_user($test_user1);
+    //         wp_delete_user($test_user2);
+    //     }
+    //     // null
+    //     {
+    //         $actual = cr_deserialize_usermeta_values(null);
+    //         $this->assertNotNull($actual,"値を取得できない");
+    //         $this->assertIsArray($actual,"配列ではない");
+    //         $this->assertEquals(0,count($actual) ,"配列数が一致しない");
+    //     }
+    //     // empty
+    //     {
+    //         $actual = cr_deserialize_usermeta_values([]);
+    //         $this->assertNotNull($actual,"値を取得できない");
+    //         $this->assertIsArray($actual,"配列ではない");
+    //         $this->assertEquals(0,count($actual) ,"配列数が一致しない");
+    //     }
+    // }
+
 }
