@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: checkout repos
         uses: actions/checkout@v4
+      - name: Config Composer Token
+        run: composer config github-oauth.github.com secrets.GITHUB_TOKEN
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
