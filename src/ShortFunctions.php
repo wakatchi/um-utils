@@ -15,14 +15,14 @@ class ShortFunctions {
     }
 
     /**
-     * Formats the given price into a displayable format.
+     * Formats the given price into a currency display format.
      *
-     * @param float $price The price to be formatted.
-     * @param string $alt_text The alternative text to be displayed if the price is empty.
+     * @param float|int|string $price The price to format.
+     * @param string $alt_text The alternative text to return if the price is empty or not numeric. Default is '0円'.
      * @return string The formatted price with the currency symbol.
      */
     public static function currensy_display_format( $price, $alt_text = '0円'){
-        if( empty($price) ){
+        if( empty($price) || !is_numeric($price) ){
             return $alt_text;
         }
         return number_format( $price ).'円' ;

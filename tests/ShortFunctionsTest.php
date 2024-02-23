@@ -18,6 +18,11 @@ class ShortFunctionsTest extends TestCase {
             $this->assertEquals($expected, $result);
         }
         {
+            $expected = '0円';
+            $result = ShortFunctions::currensy_display_format('aaaa');
+            $this->assertEquals($expected, $result);
+        }
+        {
             $expected = '100円';
             $result = ShortFunctions::currensy_display_format(100);
             $this->assertEquals($expected, $result);
