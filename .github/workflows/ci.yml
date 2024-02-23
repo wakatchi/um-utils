@@ -19,7 +19,7 @@ jobs:
           dev: yes
           args: --profile --ignore-platform-reqs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}          
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
