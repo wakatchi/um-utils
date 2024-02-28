@@ -132,5 +132,18 @@ class ShortFunctions {
             }
         }
     }
+
+    /**
+     * 指定された16進数のカラーコードをRGBA形式に変換します。
+     *
+     * @param string $hex 16進数のカラーコード
+     * @param float $opacity 不透明度（0から1の範囲で指定）
+     * @return string RGBA形式のカラーコード
+     */
+    public static function hex2Rgba($hex, $opacity = 1){
+        list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+
+        return "rgba($r, $g, $b, $opacity)";
+    }
 }
 

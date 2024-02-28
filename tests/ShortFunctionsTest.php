@@ -195,6 +195,32 @@ class ShortFunctionsTest extends TestCase {
         }
     }
 
+    public function testHex2Rgba() {
+        // Test with full opacity
+        {
+            $hex = "#FF0000";
+            $expected = "rgba(255, 0, 0, 1)";
+            $result = ShortFunctions::hex2Rgba($hex);
+            $this->assertEquals($expected, $result);
+        }
+        
+        // Test with custom opacity
+        {
+            $hex = "#00FF00";
+            $opacity = 0.5;
+            $expected = "rgba(0, 255, 0, 0.5)";
+            $result = ShortFunctions::hex2Rgba($hex, $opacity);
+            $this->assertEquals($expected, $result);
+        }
+        
+        // Test with lowercase hex value
+        {
+            $hex = "#0000ff";
+            $expected = "rgba(0, 0, 255, 1)";
+            $result = ShortFunctions::hex2Rgba($hex);
+            $this->assertEquals($expected, $result);
+        }
+    }
    /**
      */
     // #[Test]
