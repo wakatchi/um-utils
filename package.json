@@ -1,7 +1,7 @@
 {
     "scripts": {
         "wp-env": "wp-env",
-        "env:start": "wp-env start --xdebug=develop,coverage --update",
+        "env:start": "wp-env start --update",
         "env:stop": "wp-env stop",
         "test:run": "wp-env run --env-cwd='wp-content/themes/test' tests-wordpress vendor/bin/phpunit --verbose --coverage-clover=coverage.xml"
     },
