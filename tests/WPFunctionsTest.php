@@ -112,6 +112,8 @@ class WPFunctionsTest extends TestCase {
 
             $actual = WPFunctions::is_current_auther();
             $this->assertTrue($actual);
+
+            wp_delete_user($expect);
         }
         {
             $expect = wp_create_user( "foo","bar");
@@ -131,6 +133,8 @@ class WPFunctionsTest extends TestCase {
 
             $actual = WPFunctions::is_current_auther();
             $this->assertFalse($actual);
+
+            wp_delete_user($expect);
         }
     }
 
