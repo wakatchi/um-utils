@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: '18.x'
       - name: Install dependencies
-        run: npm update
+        run: npm install
       - name: launch wp-env
         run: npm run env:start
       - name: wp-env debug infomation
@@ -38,4 +38,5 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: wakatchi/um-utils
+          file: ./coverage.xml
+          fail_ci_if_error: true
