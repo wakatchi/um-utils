@@ -46,6 +46,7 @@ class WPFunctions {
      * Returns the host URL based on the current server scheme.
      *
      * @return string The host URL.
+     * @deprecated Use `home_url()` instead.
      */
     public static function get_host_url(){
         $scheme = is_ssl() ? 'https' : 'http' ;
@@ -66,6 +67,8 @@ class WPFunctions {
      *
      * @param mixed $data The variable to be dumped.
      * @return string The formatted string representation of the variable.
+     * 
+     * @codeCoverageIgnore
      */
     public static function var_dump_text( $data ){
         ob_start();
@@ -85,7 +88,7 @@ class WPFunctions {
      * @return array The deserialized and merged array of usermeta values.
      */
     public static function deserialize_usermeta_values( $meta_values ) {
-        if( empty($meta_values )) {
+        if( empty($meta_values ) || !is_array($meta_values) ){
             return [] ;
         }
 
@@ -107,6 +110,8 @@ class WPFunctions {
      * @param string $file The path to the file to be loaded.
      * @param mixed $param Optional parameter to be passed to the included file.
      * @return string The content of the file as a string.
+     * 
+     * @codeCoverageIgnore
      */
     public static function load_content( $file, $param = null) {
         ob_start();
@@ -124,6 +129,8 @@ class WPFunctions {
      * @param string $slug The text domain to use for translation.
      * @param mixed ...$arg Optional arguments to be passed to the translated string.
      * @return string The translated and formatted string.
+     * 
+     * @codeCoverageIgnore
      */
     public static function __s( $msgid, $slug, ...$arg){
         return sprintf( __( $msgid, $slug ), ...$arg ) ;
