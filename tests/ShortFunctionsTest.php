@@ -6,6 +6,67 @@ use Yoast\WPTestUtils\BrainMonkey\TestCase;
 
 class ShortFunctionsTest extends TestCase {
     
+
+    public function testGetOrDefault()
+    {
+        // Test with non-empty value
+        {
+            $value = 'Hello';
+            $default = '-';
+            $expected = 'Hello';
+            $result = ShortFunctions::get_or_default($value, $default);
+            $this->assertEquals($expected, $result);
+        }
+        
+        // Test with empty value
+        {
+            $value = '';
+            $default = '-';
+            $expected = '-';
+            $result = ShortFunctions::get_or_default($value, $default);
+            $this->assertEquals($expected, $result);
+        }
+        
+        // Test with null value
+        {
+            $value = null;
+            $default = '-';
+            $expected = '-';
+            $result = ShortFunctions::get_or_default($value, $default);
+            $this->assertEquals($expected, $result);
+        }
+    }
+
+    public function testGetNumberOrDefault()
+    {
+        // Test with non-empty value
+        {
+            $value = 1000;
+            $default = '-';
+            $expected = '1,000';
+            $result = ShortFunctions::get_number_or_default($value, $default);
+            $this->assertEquals($expected, $result);
+        }
+        
+        // Test with empty value
+        {
+            $value = '';
+            $default = '-';
+            $expected = '-';
+            $result = ShortFunctions::get_number_or_default($value, $default);
+            $this->assertEquals($expected, $result);
+        }
+        
+        // Test with null value
+        {
+            $value = null;
+            $default = '-';
+            $expected = '-';
+            $result = ShortFunctions::get_number_or_default($value, $default);
+            $this->assertEquals($expected, $result);
+        }
+    }
+    
     function testCurrensyDisplayFormat() {
         {
             $expected = '0円';

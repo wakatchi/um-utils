@@ -164,6 +164,13 @@ class WPFunctionsTest extends TestCase {
             $actualOutput = WPFunctions::deserialize_usermeta_values($metaValues);
             $this->assertEquals($expectedOutput, $actualOutput);
         }
+        {
+            // Test case 5: Verify that some arrays do not have JSON format
+            $metaValues = ['a:1:{i:0;s:3:"foo";}', 'bar','scott','a:1:{i:0;s:5:"tiger";}'];
+            $expectedOutput = ['foo','bar','scott','tiger'];
+            $actualOutput = WPFunctions::deserialize_usermeta_values($metaValues);
+            $this->assertEquals($expectedOutput, $actualOutput);
+        }
     }
 }
 
