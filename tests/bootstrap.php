@@ -2,6 +2,12 @@
 
 use Yoast\WPTestUtils\WPIntegration;
 
+$patchwork = dirname( __DIR__ ) . '/vendor/antecedent/patchwork/Patchwork.php';
+# require patchwork first
+if ( file_exists( $patchwork ) ){
+    require_once $patchwork;
+}
+
 require_once dirname( __DIR__ ) . '/vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php';
 
 $test_dir = WPIntegration\get_path_to_wp_test_dir();
