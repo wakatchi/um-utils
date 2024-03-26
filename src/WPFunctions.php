@@ -137,5 +137,15 @@ if ( !class_exists( 'Wakatchi\UMUtils\WPFunctions' ) ) {
         public static function __s( $msgid, $slug, ...$arg){
             return sprintf( __( $msgid, $slug ), ...$arg ) ;
         }
+
+        /**
+         * Validates a term.
+         *
+         * @param mixed $term The term to validate.
+         * @return bool Returns true if the term is not null and not a WordPress error, false otherwise.
+         */
+        public static function validate_term( $term ) {
+            return !is_null($term) && !is_wp_error($term);
+        }
     }
 }
