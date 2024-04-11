@@ -28,11 +28,11 @@ abstract class MailConfigure {
         $custom_emails = $this->get_custom_emails();
 
         foreach($custom_emails as $slug => $custom_email){
-            if( !array_key_exists($slug.'_on',UM()->options()->options )){
-                UM()->options()->options[ $slug.'_on' ] = empty( $custom_email['default_active']) ? 0 : 1 ;
-                UM()->options()->options[ $slug.'_sub' ] = $custom_email['subject'] ;
+            $option = UM()->options()->get($slug.'_on');
+            if( !$option ) {
+                UM()->options()->update($slug.'_on', empty( $custom_email['default_active']) ? 0 : 1);
+                UM()->options()->update($slug.'_sub', $custom_email['subject']);
             }
-
             $located = UM()->mail()->locate_template($slug) ;
             if( !file_exists($located)){
                 file_put_contents(($located),$custom_email['body']);
