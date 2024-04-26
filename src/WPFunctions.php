@@ -133,7 +133,7 @@ if ( !class_exists( 'Wakatchi\UMUtils\WPFunctions' ) ) {
          */
         public static function render_template( $file, $param = null) {
             $template_path = apply_filters('wum_get_template_path', $file);
-            $output = self::load_content($template_path,$param);
+            $output = self::load_content( ShortFunctions::ensure_php_extension($template_path),$param);
             return htmlspecialchars_decode(do_shortcode($output), ENT_NOQUOTES) ;
         }
 
