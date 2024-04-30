@@ -30,10 +30,16 @@ if ( !class_exists( 'Wakatchi\UMUtils\Core\UserViews' ) ) {
             if( is_null($user_id) ){
                 return ;
             }
+            $viewed_users = get_user_meta( $user_id, self::VIEWED_USED_META_KEY, true );
             if( is_null($viewed_user_id) ){
                 $viewed_user_id = get_current_user_id();
+                // for Geust user
+                if( is_null($viewed_user_id) ){
+                    do {
+                        $viewed_user_id = mt_rand();
+                    } while (get_userdata($viewed_user_id) !== false);
+                }
             }
-            $viewed_users = get_user_meta( $user_id, self::VIEWED_USED_META_KEY, true );
             if ( !is_array($viewed_users) ){
                 $viewed_users = [];
             }
