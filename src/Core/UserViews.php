@@ -34,7 +34,7 @@ if ( !class_exists( 'Wakatchi\UMUtils\Core\UserViews' ) ) {
             if( is_null($viewed_user_id) ){
                 $viewed_user_id = get_current_user_id();
                 // for Geust user
-                if( is_null($viewed_user_id) ){
+                if( $viewed_user_id < 1){
                     do {
                         $viewed_user_id = mt_rand();
                     } while (get_userdata($viewed_user_id) !== false);

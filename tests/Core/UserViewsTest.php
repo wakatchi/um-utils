@@ -53,6 +53,11 @@ class UserViewsTest extends TestCase {
         $userViews->add_viewed_user($this->user_id_1, $this->user_id_2);
         $actual = $userViews->get_user_view_count($this->user_id_1);
         $this->assertEquals(1, $actual);
+
+        // Check if the user is added
+        $viewed_users = get_user_meta( $this->user_id_1, "wum_viewed_user", true );
+        $actual_user = get_user_by('ID',array_key_first($viewed_users));
+        $this->assertEquals($this->user_id_2, $actual_user->ID);
     }
     public function testAddViewedUser_user_id_null(){
         $userViews = new UserViews();
@@ -68,6 +73,11 @@ class UserViewsTest extends TestCase {
         $userViews->add_viewed_user($this->user_id_1);
         $actual = $userViews->get_user_view_count($this->user_id_1);
         $this->assertEquals(1, $actual);
+
+        // Check if the user is added
+        $viewed_users = get_user_meta( $this->user_id_1, "wum_viewed_user", true );
+        $actual_user = get_user_by('ID',array_key_first($viewed_users));
+        $this->assertEquals($this->user_id_2, $actual_user->ID);
     }
 
     public function testAddViewedUser_guest_user(){
@@ -75,6 +85,11 @@ class UserViewsTest extends TestCase {
         $userViews->add_viewed_user($this->user_id_1,null);
         $actual = $userViews->get_user_view_count($this->user_id_1);
         $this->assertEquals(1, $actual);
+
+        // Check if the guest user is added
+        $viewed_users = get_user_meta( $this->user_id_1, "wum_viewed_user", true );
+        $actual_user = get_user_by('ID',array_key_first($viewed_users));
+        $this->assertFalse($actual_user);
     }
 
     public function testAddViewedUser_duplicate_user(){
@@ -122,6 +137,11 @@ class UserViewsTest extends TestCase {
         });
         $actual = $userViews->get_user_view_count($this->user_id_1);
         $this->assertEquals(1, $actual);
+        
+        // Check if the user is added
+        $viewed_users = get_user_meta( $this->user_id_1, "wum_viewed_user", true );
+        $actual_user = get_user_by('ID',array_key_first($viewed_users));
+        $this->assertEquals($this->user_id_2, $actual_user->ID);
     }
 
     public function testAddViewedUser_week(){
