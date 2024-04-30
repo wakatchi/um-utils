@@ -70,6 +70,13 @@ class UserViewsTest extends TestCase {
         $this->assertEquals(1, $actual);
     }
 
+    public function testAddViewedUser_guest_user(){
+        $userViews = new UserViews();
+        $userViews->add_viewed_user($this->user_id_1,null);
+        $actual = $userViews->get_user_view_count($this->user_id_1);
+        $this->assertEquals(1, $actual);
+    }
+
     public function testAddViewedUser_duplicate_user(){
         $userViews = new UserViews();
 
