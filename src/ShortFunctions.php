@@ -2,6 +2,8 @@
 
 namespace Wakatchi\UMUtils;
 
+use ftp;
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
@@ -145,6 +147,16 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         public static function hex2Rgba( $hex, $opacity = 1) {
             list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
             return "rgba($r, $g, $b, $opacity)";
+        }
+
+        /**
+         * Ensures that the given filename has the '.php' extension.
+         *
+         * @param string $filename The filename to check.
+         * @return string The filename with the '.php' extension, if it doesn't already have it.
+         */
+        public static function ensure_php_extension($filename) {
+            return pathinfo($filename, PATHINFO_EXTENSION) == 'php' ? $filename : $filename . '.php';
         }
     }
 }

@@ -125,6 +125,19 @@ if ( !class_exists( 'Wakatchi\UMUtils\WPFunctions' ) ) {
         }
 
         /**
+         * Renders a template file with optional parameters.
+         *
+         * @param string $file The path to the template file.
+         * @param mixed $param Optional parameters to be passed to the template.
+         * @return string The rendered template content.
+         */
+        public static function render_template( $file, $param = null) {
+            $template_path = apply_filters('wum_get_template_path', $file);
+            $output = self::load_content( ShortFunctions::ensure_php_extension($template_path),$param);
+            return htmlspecialchars_decode(do_shortcode($output), ENT_NOQUOTES) ;
+        }
+
+        /**
          * Translates and formats a string using the specified text domain.
          *
          * @param string $msgid The message ID to be translated.
