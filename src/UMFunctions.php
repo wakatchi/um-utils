@@ -59,38 +59,5 @@ if ( !class_exists( 'Wakatchi\UMUtils\UMFunctions' ) ) {
                                 $default );
         }
 
-        /**
-         * Retrieves the existing terms for the given taxonomies that have associated posts.
-         *
-         * @param string|array $taxonomies The taxonomies to retrieve terms from.
-         * @return array An array of existing terms with their associated post count.
-         */
-        public static function get_post_exist_terms($taxonomies){
-            $terms = get_terms([
-                'taxonomy' => $taxonomies,
-                'hide_empty' => true,
-            ]);
-            $exist_terms = [];
-            if( count($terms) > 0 ) {
-                global $wpdb;
-                foreach( $terms as $term ) {
-                    $sql = "
-                        SELECT COUNT(*) 
-                        FROM $wpdb->term_relationships AS tr
-                        INNER JOIN $wpdb->posts AS p ON tr.object_id = p.ID
-                        WHERE tr.term_taxonomy_id = %d
-                        AND p.post_status = 'publish'
-                    ";
-                    $count = $wpdb->get_var($wpdb->prepare($sql, $term->term_id));
-                    if( $count > 0 ) {
-                        $exist_terms[] = [
-                            'term' => $term,
-                            'count' => $count,
-                        ];
-                    }
-                }
-            }
-            return $exist_terms ;
-        }
     }
 }

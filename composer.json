@@ -1,7 +1,7 @@
 {
     "name": "wakatchi/um-utils",
     "description": "Utility for member site development using WordPress",
-    "version": "0.7.6",
+    "version": "0.7.7",
     "type": "library",
     "license": "MIT",
     "authors": [
