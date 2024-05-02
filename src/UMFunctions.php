@@ -65,7 +65,7 @@ if ( !class_exists( 'Wakatchi\UMUtils\UMFunctions' ) ) {
          * @param string|array $taxonomies The taxonomies to retrieve terms from.
          * @return array An array of existing terms with their associated post count.
          */
-        function get_post_exist_terms($taxonomies){
+        public static function get_post_exist_terms($taxonomies){
             $terms = get_terms([
                 'taxonomy' => $taxonomies,
                 'hide_empty' => true,
