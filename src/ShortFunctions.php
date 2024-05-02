@@ -158,5 +158,27 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         public static function ensure_php_extension($filename) {
             return pathinfo($filename, PATHINFO_EXTENSION) == 'php' ? $filename : $filename . '.php';
         }
+
+        /**
+         * Sorts an array by the 'count' key in descending order.
+         *
+         * @param array $array The array to be sorted.
+         * @return array The sorted array.
+         */
+        function sort_array_by_count( $array ) {
+            array_multisort(array_column($array,'count'),SORT_DESC,$array);
+            return $array;
+        }
+        
+        /**
+         * Returns a new array containing the first $limit elements of the given array.
+         *
+         * @param array $array The input array.
+         * @param int $limit The maximum number of elements to include in the new array. Default is 10.
+         * @return array The new array containing the first $limit elements of the input array.
+         */
+        function narrow_top_array( $array, $limit = 10) {
+            return array_slice($array , 0, $limit);
+        }
     }
 }
