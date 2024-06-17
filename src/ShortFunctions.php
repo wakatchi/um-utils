@@ -111,6 +111,20 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         }
 
         /**
+         * Formats a datetime string in the format 'HH時mm分'.
+         *
+         * @param string $datetime The datetime string to format.
+         * @param string $alt_text The alternative text to return if the datetime is empty.
+         * @return string The formatted datetime string.
+         */
+        public static function time_display_format_HHii ($datetime, $alt_text = ''){
+            if( empty($datetime) ){
+                return $alt_text ;
+            }
+            return date('H時i分',strtotime($datetime));
+        }
+
+        /**
          * Validates an array.
          *
          * This function checks if the given value is not null, is an array, and has at least one element.

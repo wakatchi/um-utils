@@ -3,7 +3,7 @@
 		"WP_DEBUG": true
 	},
 	"phpVersion": "8.2",
-	"core": "https://ja.wordpress.org/wordpress-6.5.2-ja.zip",
+	"core": "https://ja.wordpress.org/wordpress-6.5.4-ja.zip",
 	"port": 40010,
 	"testsPort": 40011,
 	"env": {
@@ -11,7 +11,7 @@
 			"themes": [
 			],
 			"plugins": [
-				"https://downloads.wordpress.org/plugin/ultimate-member.2.8.5.zip"
+				"https://downloads.wordpress.org/plugin/ultimate-member.2.8.6.zip"
 			],
 			"mappings": {
 				"wp-content/themes/test": "./"
