@@ -59,5 +59,30 @@ if ( !class_exists( 'Wakatchi\UMUtils\UMFunctions' ) ) {
                                 $default );
         }
 
+        /**
+         * Retrieves the labels of selected values from a multiple select field for a given user.
+         * 
+         * The reason behind this function is that for the Ultimate member's multi-select field, the only thing you can get with um_user is the key.
+         *
+         * @param int    $user_id         The ID of the user.
+         * @param string $field_meta_key  The meta key of the multiple select field.
+         *
+         * @return array  An array of labels corresponding to the selected values.
+         */
+        function get_multiple_select_values( $user_id, $field_meta_key) {
+            $field_values = UMFunctions::get_um_user_data( $user_id, $field_meta_key);
+            if( !$field_values ) {
+                return [];
+            }
+
+            $um_fields = UM()->fields()->get_field( $field_meta_key );
+            $labels = [];
+            foreach( $field_values as $value ){
+                if( isset($um_fields['options'][$value])){
+                    $labels[] = $um_fields['options'][$value];
+                }
+            }
+            return $labels;
+        }
     }
 }
