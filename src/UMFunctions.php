@@ -69,7 +69,7 @@ if ( !class_exists( 'Wakatchi\UMUtils\UMFunctions' ) ) {
          *
          * @return array  An array of labels corresponding to the selected values.
          */
-        function get_multiple_select_values( $user_id, $field_meta_key) {
+        function get_um_multiple_select_values( $user_id, $field_meta_key) {
             $field_values = UMFunctions::get_um_user_data( $user_id, $field_meta_key);
             if( !$field_values ) {
                 return [];
