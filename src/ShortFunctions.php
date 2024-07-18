@@ -139,6 +139,21 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         }
 
         /**
+         * Displays a custom formatted date and time.
+         *
+         * @param string $datetime The date and time to format.
+         * @param string $format The format to use for displaying the date and time. Default is 'Y年m月d日 H時i分'.
+         * @param string $alt_text The alternative text to return if $datetime is empty. Default is an empty string.
+         * @return string The formatted date and time.
+         */
+        public static function display_custom_format($datetime, $format = 'Y年m月d日 H時i分',$alt_text = ''){
+            if( empty($datetime) ){
+                return $alt_text ;
+            }
+            return date($format,strtotime($datetime));
+        }
+
+        /**
          * Validates an array.
          *
          * This function checks if the given value is not null, is an array, and has at least one element.
