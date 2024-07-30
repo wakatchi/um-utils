@@ -223,5 +223,45 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         public static function narrow_top_array( $array, $limit = 10) {
             return array_slice($array , 0, $limit);
         }
+
+        /**
+         * Checks if a string is entirely lowercase.
+         *
+         * @param string $string The string to check.
+         * @return bool Returns true if the string is entirely lowercase, false otherwise.
+         */
+        public static function is_lowercase($string) {
+            return preg_match('/^[a-z]+$/', $string) === 1;
+        }
+        
+        /**
+         * Checks if a string contains only alphanumeric characters.
+         *
+         * @param string $string The string to be checked.
+         * @return bool Returns true if the string contains only alphanumeric characters, false otherwise.
+         */
+        public static function is_alpha_and_numetic($string) {
+            return ctype_alnum($string);
+        }
+        
+        /**
+         * Checks if a given string is a valid email address.
+         *
+         * @param string $string The string to be checked.
+         * @return bool Returns true if the string is a valid email address, false otherwise.
+         */
+        public static function is_valid_email($string) {
+            return filter_var($string, FILTER_VALIDATE_EMAIL) !== false;
+        }
+        
+        /**
+         * Checks if a string is a valid phone number.
+         *
+         * @param string $string The string to be checked.
+         * @return bool Returns true if the string is a valid phone number, false otherwise.
+         */
+        public static function is_phone_number($string) {
+            return preg_match('/^[0-9-]+$/', $string) === 1;
+        }
     }
 }
