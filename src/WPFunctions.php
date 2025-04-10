@@ -29,6 +29,30 @@ if ( !class_exists( 'Wakatchi\UMUtils\WPFunctions' ) ) {
         }
 
         /**
+         * Checks if a user is an administrator.
+         *
+         * This function determines whether a given user, identified by their user ID, 
+         * has the 'administrator' role in WordPress. It performs validation to ensure 
+         * the user ID is not null and corresponds to a valid user.
+         *
+         * @param int|null $user_id The ID of the user to check. If null, the function 
+         *                          will return false.
+         * 
+         * @return bool True if the user has the 'administrator' role, false otherwise. 
+         *              Returns false if the user ID is null or if the user does not exist.
+         */
+        public static function is_user_admin( $user_id) {
+            if( is_null($user_id) ) {
+                return false ;
+            }
+            $user = get_userdata( $user_id );
+            if( is_null($user) ) {
+                return false ;
+            }
+            return user_can( $user_id, 'administrator' );
+        }
+
+        /**
          * Returns the user ID if it is not null, otherwise returns the current user ID.
          *
          * @param int|null $user_id The user ID.
