@@ -31,6 +31,31 @@ if ( !class_exists( 'Wakatchi\UMUtils\UMFunctions' ) ) {
         }
 
         /**
+         * Retrieve a specific user profile meta value for a given user ID.
+         *
+         * This function fetches the user profile data for the specified user ID
+         * and retrieves the value of the provided meta key. It temporarily sets
+         * the user context using `um_fetch_user()` and resets it afterward using
+         * `um_reset_user()`.
+         *
+         * @param int    $user_id  The ID of the user whose profile data is being retrieved.
+         * @param string $meta_key The meta key for the specific profile data to retrieve.
+         * 
+         * @return mixed The value of the specified meta key for the given user.
+         *
+         * @note Use `get_um_user_profile` when you need to retrieve a single meta key
+         *       value for a user. If you need to retrieve multiple meta values or
+         *       perform bulk operations, consider using `get_um_user_data` for better
+         *       performance and efficiency.
+         */
+        public static function get_um_user_profile( $user_id, $meta_key ){
+            um_fetch_user( $user_id );
+            $value = um_profile( $meta_key );
+            um_reset_user();
+            return $value;
+        }
+
+        /**
          * Retrieves the user meta value for a given user ID and meta key.
          * If the meta value is not found, returns the default value.
          *
