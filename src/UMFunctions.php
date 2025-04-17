@@ -84,5 +84,25 @@ if ( !class_exists( 'Wakatchi\UMUtils\UMFunctions' ) ) {
             }
             return $labels;
         }
+
+        /**
+         * Retrieves the cover image URL for a specified user.
+         *
+         * This function fetches the cover image URL associated with a user's profile.
+         * If the user does not have a cover image set, it returns the default cover image URL.
+         *
+         * @param int $user_id The ID of the user whose cover image URL is to be retrieved.
+         * @return string The URL of the user's cover image, or the default cover image URL if none is set.
+         */
+        public static function get_um_cover_image_url( $user_id ) {
+            um_fetch_user( $user_id );
+            $cover_image_url = um_get_cover_uri( um_profile( 'cover_photo' ), null );
+            um_reset_user();
+            if( !$cover_image_url ) {
+                $cover_image_url = um_get_default_cover_uri();
+            }
+            return $cover_image_url;
+        }
+        
     }
 }

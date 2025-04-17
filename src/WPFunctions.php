@@ -251,5 +251,25 @@ if ( !class_exists( 'Wakatchi\UMUtils\WPFunctions' ) ) {
             }
             return $total_count;
         }
+
+        /**
+         * Generates a unique post name for a given post type.
+         *
+         * This function creates a unique post name by generating a random string
+         * of the specified length. It ensures that the generated post name does
+         * not already exist for the specified post type.
+         *
+         * @param string $post_type The post type for which the unique post name is generated. Defaults to 'page'.
+         * @param int    $length    The length of the generated post name. Defaults to 10.
+         * 
+         * @return string A unique post name.
+         */
+        public static function generate_unique_post_name($post_type = 'page',$length = 10) {
+            $post_name = substr(md5(uniqid(mt_rand(), true)), 0, $length);
+            if (get_page_by_path($post_name, OBJECT, $post_type)) {
+                return self::generate_unique_post_name( $post_type );
+            }
+            return $post_name;
+        }
     }
 }
