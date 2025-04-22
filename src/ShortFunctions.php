@@ -243,6 +243,18 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         public static function is_alpha_and_numetic($string) {
             return ctype_alnum($string);
         }
+
+        /**
+         * Checks if a given string is a valid URL slug.
+         *
+         * A valid URL slug consists of only alphanumeric characters, dashes (-), underscores (_), and dots (.).
+         *
+         * @param string $string The string to validate as a URL slug.
+         * @return bool Returns true if the string is a valid URL slug, false otherwise.
+         */
+        public static function is_urL_slug($string) {
+            return preg_match('/^[a-zA-Z0-9\-_\.]+$/', $string);
+        }
         
         /**
          * Checks if a given string is a valid email address.
