@@ -278,32 +278,32 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
 
 
         /**
-         * Minifies HTML content by removing unnecessary whitespace between HTML tags.
+         * Minifies HTML by removing unnecessary whitespace between HTML tags.
          *
          * This function takes an HTML string as input and removes any whitespace
          * (including spaces, tabs, and newlines) that exists between HTML tags.
-         * It does not affect the content within the tags themselves.
+         * It does not affect the content within the tags.
          *
          * @param string $html The HTML string to be minified.
          * @return string The minified HTML string with whitespace between tags removed.
          */
-        function minify_html_between_tags($html) {
+        public static function minify_html_between_tags($html) {
             return preg_replace('/>\s+</', '><', $html);
         }
 
         /**
          * Minifies the given HTML content by removing unnecessary whitespace, comments, 
-         * and extra spaces around certain characters.
+         * and extra spaces around specific characters.
          *
          * This function performs the following operations:
          * - Replaces multiple whitespace characters with a single space.
          * - Removes HTML comments.
-         * - Removes unnecessary spaces around specific characters such as `{}`, `;`, `:`, `,`, `[`, and `]`.
+         * - Removes extra spaces around specific characters such as `{}`, `;`, `:`, `,`, `[`, and `]`.
          *
          * @param string $html The HTML content to be minified.
          * @return string The minified HTML content.
          */
-        function minify_html($html) {
+        public static function minify_html($html) {
             $html = preg_replace('/\s+/', ' ', $html);
             $html = preg_replace('/<!--.*?-->/s', '', $html);
             $html = preg_replace('/\s*([{};:,\[\]])\s*/', '$1', $html);
