@@ -275,5 +275,39 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         public static function is_phone_number($string) {
             return preg_match('/^[0-9-]+$/', $string) === 1;
         }
+
+
+        /**
+         * Minifies HTML content by removing unnecessary whitespace between HTML tags.
+         *
+         * This function takes an HTML string as input and removes any whitespace
+         * (including spaces, tabs, and newlines) that exists between HTML tags.
+         * It does not affect the content within the tags themselves.
+         *
+         * @param string $html The HTML string to be minified.
+         * @return string The minified HTML string with whitespace between tags removed.
+         */
+        function minify_html_between_tags($html) {
+            return preg_replace('/>\s+</', '><', $html);
+        }
+
+        /**
+         * Minifies the given HTML content by removing unnecessary whitespace, comments, 
+         * and extra spaces around certain characters.
+         *
+         * This function performs the following operations:
+         * - Replaces multiple whitespace characters with a single space.
+         * - Removes HTML comments.
+         * - Removes unnecessary spaces around specific characters such as `{}`, `;`, `:`, `,`, `[`, and `]`.
+         *
+         * @param string $html The HTML content to be minified.
+         * @return string The minified HTML content.
+         */
+        function minify_html($html) {
+            $html = preg_replace('/\s+/', ' ', $html);
+            $html = preg_replace('/<!--.*?-->/s', '', $html);
+            $html = preg_replace('/\s*([{};:,\[\]])\s*/', '$1', $html);
+            return trim($html);
+        }
     }
 }
