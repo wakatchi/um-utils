@@ -6,7 +6,7 @@
         "test:run": "wp-env run --env-cwd='wp-content/themes/test' tests-wordpress vendor/bin/phpunit --verbose --coverage-clover=coverage.xml"
     },
     "devDependencies": {
-        "@wordpress/env": "^8.13.0"
+        "@wordpress/env": "^10.24.0"
     },
     "config": {
         "WP_DEBUG": true
