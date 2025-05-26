@@ -4,6 +4,7 @@ on:
   push:
     branches: [ "main",'issue#/*' ]
 
+
 jobs:
   unit-test:
     name: Run unit tests with wp-env
@@ -14,7 +15,7 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         env:
-          COMPOSER_AUTH: '{"http-basic":{"repo.packagist.org":{"username":"token","password":"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"}}}'
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
         with:
           dev: yes
           args: --profile --ignore-platform-reqs
