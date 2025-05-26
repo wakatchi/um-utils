@@ -4,7 +4,6 @@ on:
   push:
     branches: [ "main",'issue#/*' ]
 
-
 jobs:
   unit-test:
     name: Run unit tests with wp-env
