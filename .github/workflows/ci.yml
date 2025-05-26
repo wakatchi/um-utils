@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         env:
-          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.COMPOSER_AUTH }}"} }'
         with:
           dev: yes
           args: --profile --ignore-platform-reqs
