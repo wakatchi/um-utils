@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         env:
-          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+          COMPOSER_AUTH: '{"http-basic":{"repo.packagist.org":{"username":"token","password":"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"}}}'
         with:
           dev: yes
           args: --profile --ignore-platform-reqs
