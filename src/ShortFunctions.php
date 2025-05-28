@@ -152,13 +152,14 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
                 return $alt_text ;
             }
 
-            // 日本語の曜日を追加
             $weekdays = ['日', '月', '火', '水', '木', '金', '土'];
             $weekday = $weekdays[date('w', strtotime($datetime))];
 
-            // 曜日をフォーマットに含める
-            $formatted_date = date($format, strtotime($datetime));
-            return str_replace('(l)', "({$weekday})", $formatted_date);            
+            if (strpos($format, '(l)') !== false) {
+                $format = str_replace('(l)', "({$weekday})", $format);
+            }
+
+            return date($format, strtotime($datetime));
         }
 
         /**
