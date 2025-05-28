@@ -139,18 +139,26 @@ if ( !class_exists( 'Wakatchi\UMUtils\ShortFunctions' ) ) {
         }
 
         /**
-         * Displays a custom formatted date and time.
+         * Formats a given datetime string into a custom format with support for Japanese weekdays.
          *
-         * @param string $datetime The date and time to format.
-         * @param string $format The format to use for displaying the date and time. Default is 'Y年m月d日 H時i分'.
-         * @param string $alt_text The alternative text to return if $datetime is empty. Default is an empty string.
-         * @return string The formatted date and time.
+         * @param string $datetime The datetime string to format. If empty, the $alt_text will be returned.
+         * @param string $format The format string for the output date. Defaults to 'Y年m月d日 H時i分'.
+         *                       Use '(l)' in the format string to include the Japanese weekday.
+         * @param string $alt_text The text to return if $datetime is empty. Defaults to an empty string.
+         * @return string The formatted date string with the Japanese weekday, or the $alt_text if $datetime is empty.
          */
         public static function display_custom_format($datetime, $format = 'Y年m月d日 H時i分',$alt_text = ''){
             if( empty($datetime) ){
                 return $alt_text ;
             }
-            return date($format,strtotime($datetime));
+
+            // 日本語の曜日を追加
+            $weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+            $weekday = $weekdays[date('w', strtotime($datetime))];
+
+            // 曜日をフォーマットに含める
+            $formatted_date = date($format, strtotime($datetime));
+            return str_replace('(l)', "({$weekday})", $formatted_date);            
         }
 
         /**
